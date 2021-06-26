@@ -6,6 +6,7 @@ Automated machine learning software to simplify the machine learning development
 docker run -p 8000:8000 dabidinjr/djhautomodel
 
 Browse to http://0.0.0.0:8000/ and login using credentials below.
+
 username: admin
 password: admin
 
