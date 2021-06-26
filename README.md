@@ -13,6 +13,8 @@ password: admin
 
 # You can also Clone and build and Run
 Clone the repository and run the following in same directory as the Dockerfile
-docker build --tag djhautomodel .
-docker run -p 8000:8000 -it --name mydjhautomodel djhautomodel
+
+$docker build --tag djhautomodel .
+
+$docker run -p 8000:8000 -it --name mydjhautomodel djhautomodel
 
