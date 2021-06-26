@@ -1,0 +1,45 @@
+{% load static %}
+
+<div class="ui sidebar vertical inverted menu">
+
+  <h1 class="heading_sidebar">Hautomodel <img class="ui middle aligned mini image"
+      src="{% static 'img/hautomodel_icon.png' %}"></h1>
+  <div class="item">
+    <div class="header">Home</div>
+    <div class="menu">
+      <a class="item" href={% url 'dashboard' %}>Dashboard</a>
+      <a class="item" href={% url 'settings' %}>Settings</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="header">Structured Data</div>
+    <div class="menu">
+      <a class="item" href={% url 'struc_data_classifier' %}>Classifier</a>
+      <a class="item" href={% url 'struc_data_regressor' %}>Regressor</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="header">Image</div>
+    <div class="menu">
+      <a class="item" href={% url 'contact_dev' %}>Classifier</a>
+      <a class="item" href={% url 'contact_dev' %}>Object Detection</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="header">Text NLP</div>
+    <div class="menu">
+      <a class="item" href={% url 'contact_dev' %}>Sentiment Analysis</a>
+    </div>
+    <div class="menu">
+      <a class="item" href={% url 'contact_dev' %}>Text Classifier</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="header">Support</div>
+    <div class="menu">
+      <a class="item" href={% url 'contact_dev' %}>Contact the developer</a>
+      <a class="item" href={% url 'contact_dev' %}>Donate</a>
+      <a class="item" href={% url 'faqs' %}>FAQs</a>
+    </div>
+  </div>
+</div>

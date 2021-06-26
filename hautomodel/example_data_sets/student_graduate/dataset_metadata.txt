@@ -1,0 +1,15 @@
+==Predictors==
+
+sex 
+F=0 M=1
+
+schoolsup,famsup,paid,internet, 
+yes=1
+no=0
+
+==Target==
+graduated
+yes=1
+no=0
+
+

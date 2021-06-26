@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "inc_sidebar.html" %}
+
+<div id="main" class="pusher">
+  {% include "inc_menu_btn.html" %}
+
+  <!-- START OF SETTINGS COMPONENT -->
+  <div class="ui stackable grid container">
+    <div class="eight wide column">
+      <h1>Train new structured data model</h1>
+    </div>
+    <div class="eight wide column"></div>
+  </div>
+
+  <div class="ui stackable grid container">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+      <form class="ui form" action={% url 'train_new' %} method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="grouped fields">
+          <label for="model_type_radio">
+            <h3>Type of structure data model:</h3>
+          </label>
+
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="model_type_radio" checked="checked" tabindex="0" class="hidden"
+                value="sdata_classifier">
+              <label>Classifier - When target variable is categorical. (e.i. Male or Female, 1 or 0)</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="model_type_radio" tabindex="0" class="hidden" value="sdata_regressor">
+              <label>Regressor - When target variable is numerical or continuous. (e.i. Price, Age, Height)</label>
+            </div>
+          </div>
+
+          <div class="ui hidden divider"></div>
+
+          <label for="model_type_radio">
+            <h3>Automl backend:</h3>
+          </label>
+
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="automl_vendor" checked="checked" tabindex="0" class="hidden"
+                value="autosklearn">
+              <label>AutoSKLearn - Learn more at <a
+                  href="https://automl.github.io/auto-sklearn/master/">https://automl.github.io/auto-sklearn/master/</a></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui radio disabled checkbox">
+              <input type="radio" name="automl_vendor" tabindex="0" class="hidden" value="autokeras">
+              <label>Autokeras - To be implemented. Learn more: <a>https://autokeras.com/</a></label>
+            </div>
+          </div>
+
+          <div class="ui hidden divider"></div>
+
+          <div class="field">
+            <label for="file">
+              <h3>Upload the csv file dataset for training: </h3>
+            </label>
+            <input id="file" type="file" name="file" />
+          </div>
+
+          <div class="ui hidden divider"></div>
+
+          <div class="field">
+            <label for="targetname_input">
+              <h3>Target field to make prediction:</h3>
+            </label>
+            <input type="text" class="form-control" id="targetname_input" name="targetname_input"
+              placeholder="target_column">
+          </div>
+
+          <div class="ui hidden divider"></div>
+
+          <div class="field">
+            <label for="modelname_input">
+              <h3>Model name:</h3>
+            </label>
+            <input type="text" class="form-control" id="modelname_input" name="modelname_input"
+              placeholder="model_name">
+          </div>
+
+          <div class="ui hidden divider"></div>
+
+          <div class="field">
+            <label for="description_textarea">
+              <h3>Model description:</h3>
+            </label>
+            <textarea class="form-control" rows="5" id="description_textarea" name="description_textarea"
+              placeholder="Description of model"></textarea>
+          </div>
+
+          <hr>
+
+          <h3>Advance configuration</h3>
+
+          <div class="field">
+            <label for="train_time_input">
+              <h3>Training time:</h3>
+            </label>
+            <input type="text" class="form-control" id="train_time_input" name="train_time_input" value="60"> Maximum
+            training time in minutes. Defaults to 60 minutes.
+          </div>
+
+        </div>
+
+        <div class="ui hidden divider"></div>
+
+        <button class="ui button" type="submit">Submit</button>
+      </form>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
+
+    </div>
+    <div class="two wide column"></div>
+  </div>
+
+  <!-- END OF SETTINGS COMPONENT -->
+
+</div> <!-- END MAIN PUSHER -->
+
+{% endblock %}

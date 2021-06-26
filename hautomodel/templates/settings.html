@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% include "inc_sidebar.html" %}
+
+<div id="main" class="pusher">
+  {% include "inc_menu_btn.html" %}
+
+  <!-- START OF SETTINGS COMPONENT -->
+  <br>
+  <br>
+  <div class="ui stackable grid container">
+    <div class="eight wide column">
+      <h2>Please use <a class="item" href={% url 'admin:index' %}>django admin</a> for site management.</h2>
+    </div>
+    <div class="eight wide column"><img class="ui large rounded image" src="{% static 'img/hautomodel_icon.png' %}">
+    </div>
+  </div>
+  <!-- END OF SETTINGS COMPONENT -->
+
+</div>
+
+{% endblock %}

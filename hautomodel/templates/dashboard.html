@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "inc_sidebar.html" %}
+
+<div id="main" class="pusher">
+
+	{% include "inc_menu_btn.html" %}
+
+
+	<!-- START OF DASHBOARD COMPONENT -->
+	<br>
+	<br>
+	<div class="ui stackable grid container">
+		<div class="four wide column">
+			<h3>Welcome to Hautomodel</h3>
+
+		</div>
+		<div class="twelve wide column">
+			<p>Here's a sneak peek of your models.</p>
+			<div class="ui inverted segment">
+				<div class="ui teal inverted statistic">
+					<div class="value">
+						{{stats.sd_class_count}}
+					</div>
+					<div class="label">
+						SD Classifier
+					</div>
+				</div>
+				<div class="ui red inverted statistic">
+					<div class="value">
+						{{stats.sd_reg_count}}
+					</div>
+					<div class="label">
+						SD Regressor
+					</div>
+				</div>
+				<div class="ui violet inverted statistic">
+					<div class="value">
+						0
+					</div>
+					<div class="label">
+						Img Classifier
+					</div>
+				</div>
+				<div class="ui purple inverted statistic">
+					<div class="value">
+						0
+					</div>
+					<div class="label">
+						Obj Detection
+					</div>
+				</div>
+				<div class="ui pink inverted statistic">
+					<div class="value">
+						0
+					</div>
+					<div class="label">
+						Text NLP
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="ui stackable grid container">
+		<div class="twelve wide column"></div>
+		<div class="four wide column">
+			<div class="ui hidden divider"></div>
+			<div class="ui hidden divider"></div>
+			<button class="ui inverted purple button maintenance"><a href={% url 'maintenance' %}>Run
+					Maintenance</a></button>
+		</div>
+	</div>
+	<!-- END OF DASHBOARD COMPONENT -->
+
+</div>
+
+
+{% endblock %}

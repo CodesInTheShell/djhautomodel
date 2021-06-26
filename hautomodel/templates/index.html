@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="ui hidden divider"></div>
+<div class="ui stackable grid container">
+	<div class="five wide column"></div>
+	<div class="six wide column">
+		<img class="ui centered medium rounded image" src="{% static 'img/hautomodel_icon.png' %}">
+		<form class="ui form" action={% url 'index' %} method="POST">
+			{% csrf_token %}
+			<div class="field">
+				<label>Username</label>
+				<input type="text" name="username" placeholder="User Name" id="username">
+			</div>
+			<div class="field">
+				<label>Password</label>
+				<input type="password" name="password" id="password">
+			</div>
+			<div class="ui inverted segment">
+				<button class="ui inverted purple button" type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+	<div class="five wide column"></div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Semantic UI CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
+	<!-- Main CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
+
+	<title>Hautomodel</title>
+
+</head>
+
+<body>
+
+	<!-- Site content !-->
+	{% block content %}
+
+	{% endblock %}
+
+	<footer class="footer">
+		<div class="ui stackable grid container-fluid">
+			<div class="ui stackable grid container">
+				<div class="four wide column">
+					<p>Author: Dantebytes<br>
+						<a href="http://www.dantebytes.com" target="_blank">www.dantebytes.com</a>
+					</p>
+				</div>
+				<div class="four wide column"></div>
+				<div class="four wide column"></div>
+				<div class="four wide column">
+					<button class="ui primary button">
+						<a class="facebook_btn" href="https://www.facebook.com/dantebytes/" target="_blank">Facebook</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- JQuery -->
+	<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+	<!-- JQuery -->
+	<script src="{% static 'js/semantic.min.js' %}"></script>
+	<!-- Main JS -->
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

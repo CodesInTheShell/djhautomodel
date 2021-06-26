@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "inc_sidebar.html" %}
+
+<div id="main" class="pusher">
+  {% include "inc_menu_btn.html" %}
+
+  <!-- START OF STRUCTURED DATA REGRESSOR COMPONENT -->
+  <br>
+  <div class="ui stackable grid container">
+    <div class="column">
+      <h1>Structure Data Regressor</h1>
+    </div>
+  </div>
+  <div class="ui stackable grid container">
+    <div class="column"><button class="ui inverted pink button"><a href={% url 'train_new' %}>Train new
+          model</a></button></div>
+  </div>
+  <div class="ui stackable grid container">
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Automl Backend</th>
+          <th>Training Status</th>
+          <th>Accuracy / R2Score</th>
+          <th class="table_column_desciption">Description</th>
+          <th class="table_column_action">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for au in automl_entries %}
+        <tr>
+          <td>{{au.name}}</td>
+          <td>{{au.automl_backend}}</td>
+          {% if au.train_status == "Completed" %}
+          <td class="positive">{{au.train_status}}</td>
+          {% else %}
+          <td class="negative">{{au.train_status}}</td>
+          {% endif %}
+          <td>{{au.accuracy_score}}</td>
+          <td>{{au.description}}</td>
+          <td> <a class="positive_link" href={% url 'sd_predict' model_name=au.name %}>Predict New</a> - <a
+              class="negative_link" href={% url 'admin:index' %}>Delete</a>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ui hidden divider"></div>
+  <div class="ui hidden divider"></div>
+
+  <!-- END OF STRUCTURED DATA REGRESSOR COMPONENT -->
+
+</div>
+
+{% endblock %}

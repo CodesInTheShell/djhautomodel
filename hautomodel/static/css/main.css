@@ -1,0 +1,72 @@
+body {
+	font-family: "Lato", sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	color: black;
+}
+
+.positive_link {
+	color: green;
+}
+
+.positive_link:hover {
+	color: green;
+	font-weight: bold;
+	text-decoration: underline;
+	text-decoration-color: green;
+
+}
+
+.negative_link {
+	color: red;
+}
+
+.negative_link:hover {
+	color: red;
+	font-weight: bold;
+	text-decoration: underline;
+	text-decoration-color: red;
+
+}
+
+.table_column_desciption {
+	width: 30rem;
+}
+
+.table_column_action {
+	width: 10rem;
+}
+
+a.item:hover {
+	color: hotpink !important;
+}
+
+.maintenance:hover {
+	color: white;
+}
+
+.footer {
+	background-color: hotpink;
+	border-color: black;
+	border-style: solid;
+	border-width: 0.2rem;
+	padding: 2rem;
+	margin-top: auto;
+}
+
+.facebook_btn {
+	color: whitesmoke;
+}
+
+.heading_sidebar {
+	color: hotpink;
+	padding: 1rem;
+}

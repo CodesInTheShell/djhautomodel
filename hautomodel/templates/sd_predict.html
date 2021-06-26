@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "inc_sidebar.html" %}
+
+<div id="main" class="pusher">
+	{% include "inc_menu_btn.html" %}
+
+	<!-- START OF SD_PREDICT COMPONENT -->
+	<div class="ui stackable grid container">
+		<h2>Using model: {{automl_data.name}}</h2>
+	</div>
+	<div class="ui stackable grid container">
+		<p><b>Accuracy/Score: </b> {{automl_data.accuracy_score}}</p>
+	</div>
+	<div class="ui stackable grid container">
+		<p><b>Automl Backend: </b> {{automl_data.automl_backend}}</p>
+	</div>
+
+	<div class="ui stackable grid container">
+		{% if automl_data.model_type == "sdata_classifier" %}
+		<p><b>Automl Type: </b>Structured Data Classifier</p>
+		{% else %}
+		<p><b>Automl Type: </b>Structured Data Regressor</p>
+		{% endif %}
+	</div>
+	<div class="ui stackable grid container">
+		<p><b>Model description: </b> {{automl_data.description}}</p>
+	</div>
+
+	<div class="ui container">
+		<br>
+		<hr>
+	</div>
+
+	<div class="ui hidden divider"></div>
+	<div class="ui hidden divider"></div>
+
+	<div class="ui stackable grid container">
+		<h2>Upload csv</h2>
+	</div>
+	<div class="ui hidden divider"></div>
+	<div class="ui hidden divider"></div>
+	<div class="ui stackable grid container">
+		<p>Upload a csv file. Be sure to follow the data schema as your train dataset, column names are case sensitive
+			and should be indexed correctly.</p>
+	</div>
+
+	<div class="ui hidden divider"></div>
+	<div class="ui hidden divider"></div>
+	<div class="ui hidden divider"></div>
+
+	<div class="ui stackable grid container">
+		<h3>Upload csv for prediction.</h2>
+	</div>
+
+	<div class="ui stackable grid container">
+		<div class="eight wide column">
+			<form action={% url 'sd_predict' model_name=automl_data.name %} method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<input type="file" id="csv_dataset" name="csv_dataset">
+				<br>
+				<br>
+				<button class="ui inverted pink button" type="submit">Predict</button>
+			</form>
+		</div>
+		<div class="eight wide column"></div>
+
+	</div>
+	<div class="ui hidden divider"></div>
+	<div class="ui hidden divider"></div>
+
+	<br>
+	<hr><br><br>
+
+	<div class="ui stackable grid container">
+		<h2>Single predict</h2>
+	</div>
+
+	<div class="ui stackable grid container">
+		<div class="four wide column">
+			<form class="ui form" action={% url 'sd_predict' model_name=automl_data.name %} method="post">
+				{% csrf_token %}
+				{% for p in predictors %}
+				<div class="required field">
+					<label>{{p}}</label>
+					<input type="text" name={{p}} placeholder={{p}}>
+				</div>
+				{% endfor %}
+				<button class="ui inverted pink button" type="submit">Predict</button>
+			</form>
+			{% if pred_class %}
+			<table class="ui celled table">
+				<thead>
+					<tr>
+						<th>Result/Class</th>
+						<th>Probability</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-label="Name">{{pred_class}}</td>
+						<td data-label="Age">{{pred_proba}}</td>
+					</tr>
+				</tbody>
+			</table>
+			{% endif %}
+		</div>
+		<div class="twelve wide column"></div>
+	</div>
+
+	<div class="ui hidden divider"></div>
+	<div class="ui hidden divider"></div>
+	<!-- END OF SD_PREDICT COMPONENT -->
+
+</div>
+
+{% endblock %}
